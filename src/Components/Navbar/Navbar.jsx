@@ -17,7 +17,8 @@ const Navbar = ({setSidebar}) => {
   const [searchData,setSearchData] = useState(null);
   const[value, setValue] = useState("");
 
-  const fetchSearchData = async() =>{
+  const fetchSearchData = async(e) =>{
+    e.preventDefault();
     const searchData_url=`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${value}&key=${API_KEY}`;
     await fetch(searchData_url).then(res=>res.json()).then(data=>setSearchData(data.items[0])).then(navigate(`/search-result/${value}`));
   }
@@ -33,12 +34,12 @@ const Navbar = ({setSidebar}) => {
             <Link to='/'><img className='logo' src={logo} alt=""/></Link>
         </div>
         <div className="nav-middle flex-div">
-
-
-            <div className="search-box flex-div">
+            <form onSubmit={(e)=>fetchSearchData(e)} className="search-box flex-div">
             <input type="text" placeholder='Search' value={value} onChange={(e)=>{setValue(e.target.value)}}  />
-            <img src={search_icon} alt="" onClick={()=>fetchSearchData()} />
-            </div>
+            <button type='submit'>
+            <img src={search_icon} alt="" />
+            </button>
+            </form>
             
         </div>
 

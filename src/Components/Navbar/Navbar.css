@@ -26,6 +26,15 @@ nav{
     outline: 0;
     background: transparent;
 }
+.nav-middle .search-box button{
+    border:none;
+    background: transparent;
+    transition: all 100ms ease-in-out;
+    border-radius: 100%;
+    outline: none;
+    
+}
+
 .nav-middle .search-box img{
     width: 15px;
 }
