@@ -6,6 +6,7 @@ import VideoCard from '../../Components/VideoCard/VideoCard';
 import { Link } from 'react-router-dom';
 import { value_converter } from '../../data';
 import moment from 'moment';
+import Skeleton from '../../Components/Skeleton/Skeleton';
 
 const SearchResult = () => {
  const {query} = useParams();
@@ -19,7 +20,9 @@ const SearchResult = () => {
  },[query])
 
  if(result == null) 
-  return <>Loading...</>
+  return <>
+  <Skeleton/>
+  </>
  
  return (
     <div className="feed">

@@ -10,9 +10,9 @@ import user_profile from '../../assets/user_profile.jpg'
 import { API_KEY, value_converter } from '../../data'
 import moment from 'moment'
 import { useParams } from 'react-router-dom'
+import Skeleton from '../Skeleton/Skeleton'
 
 const PlayVideo = () => {
-
     const {videoId} = useParams();
 
     const [apiData,setApiData] = useState(null);
@@ -40,11 +40,14 @@ const PlayVideo = () => {
     },[videoId])
 
     useEffect(()=>{
-        fetchOtherData();
+            fetchOtherData();
     },[])
 
     if(apiData===null)
-        return <>Loading...</>
+        return 
+        <>
+        <Skeleton/>
+        </>
   return (
     <div className='play-video'>
         {/* <video src={video1} controls autoPlay muted></video> */}
